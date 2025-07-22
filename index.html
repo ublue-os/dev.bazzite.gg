@@ -623,12 +623,12 @@
       if (allSelectionsMade) {
         var imageName = 'bazzite-dx';
 
-        if (desktopEnvironment === 'gnome') {
-          imageName += '-gnome'
-        }
-
         if (gpuVendor === 'nvidia-open') {
           imageName += '-nvidia'
+        }
+
+        if (desktopEnvironment === 'gnome') {
+          imageName += '-gnome'
         }
 
         if (developerType === 'gamedev') {
