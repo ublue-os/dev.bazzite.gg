@@ -189,6 +189,26 @@
       background: #404040;
     }
 
+    .rebase-message {
+      color: #cfcfcf;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .rebase-command {
+      display: block;
+      background: #2d2d2d;
+      border: 1px solid #3e3e3e;
+      border-radius: 5px;
+      padding: 15px;
+      color: #cfcfcf;
+      font-family: "FiraCode Nerd Font";
+      font-size: 14px;
+      overflow-x: auto;
+      white-space: nowrap;
+      user-select: all;
+    }
+
     .hidden-fade {
       opacity: 0;
       overflow: hidden;
@@ -574,7 +594,8 @@
             </div>
           </div>
           <div class="download-button fade-transition hidden-fade">
-            <a href="" target="_blank">Rebase now!</a>
+            <p class="rebase-message">Rebase your Bazzite install to <a href="" target="_blank" class="image-name"></a> now by running the following in the terminal:</p>
+            <code class="rebase-command"></code>
           </div>
         </form>
       </div>
@@ -635,7 +656,9 @@
           imageName.replace('dx', 'gdx');
         }
 
-        jQuery('.download-button > a').attr('href', 'https://github.com/orgs/ublue-os/packages/container/package/' + imageName).text("Rebase to " + imageName + " now!");
+        var rebaseCommand = 'rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/' + imageName;
+        jQuery('.download-button .image-name').attr('href', 'https://github.com/orgs/ublue-os/packages/container/package/' + imageName).text(imageName);
+        jQuery('.download-button .rebase-command').text(rebaseCommand);
         jQuery('.download-button').removeClass('hidden-fade').addClass('shown-fade');
       } else {
         jQuery('.download-buttoon').addClass('hidden-fade').removeClass('shown-fade');
